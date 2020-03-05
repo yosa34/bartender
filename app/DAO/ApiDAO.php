@@ -14,6 +14,7 @@ namespace App\DAO;
 
 use PDO;
 use App\Entity\Item;
+use App\Entity\Review;
 use App\Entity\Recipe;
 use Carbon\Carbon;
 // use Symfony\Component\VarDumper\VarDumper;
@@ -414,7 +415,52 @@ class ApiDAO{
 
        return $recipeList;
    }
+   /**
+   * 過去の購入履歴表示
+   * 
+   * @param integer $categoryId カテゴリid.
+   * return User 該当するUserオブジェクト。ただし、該当データがない場合はnull。
+   */
+  public function apiGetReviewList(int $id): array{
+      // dd($id);
+      $sql = "SELECT * FROM review WHERE item_id = :id";
+      $stmt = $this->db->prepare($sql);
+      $stmt ->bindValue(":id",$id);
+      $result = $stmt ->execute();
+      $reviewList = array();
+      while($result && $row = $stmt->fetch(PDO::FETCH_ASSOC)){
+          $review_id = $row["review_id"];
+          $review = $row["review"];
+          $create_time = $row["create_time"];
 
+          $review_list = new Review();
+          $review_list->setReviewId($review_id);
+          $review_list->setReview($review);
+          $review_list->setTime($create_time);
+          $reviewList[] = $review_list;
+      }
+    //   dd($reviewList);
+
+     return $reviewList;
+ }
+    /**
+     * 共有コメント追加
+     * 
+     * @param integer $categoryId カテゴリid.
+     * return User 該当するUserオブジェクト。ただし、該当データがない場合はnull。
+     */
+    public function insertReview(int $id,int $user_id,$review): bool{
+        $time = Carbon::now('Asia/Tokyo');
+        $sqlInsert = "INSERT INTO review (item_id,user_id,review,create_time) VALUES (:item_id,:user_id,:review,:time)";
+        $stmt = $this->db->prepare($sqlInsert);
+        $stmt ->bindValue(":item_id",$id,PDO::PARAM_INT);
+        $stmt ->bindValue(":user_id",$user_id,PDO::PARAM_INT);
+        $stmt ->bindValue(":review",$review,PDO::PARAM_STR);
+        $stmt ->bindValue(":time",$time);
+        $result = $stmt->execute();
+
+        return $result;
+    }
 
 }
 

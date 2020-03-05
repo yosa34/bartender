@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>RANKING</title>
+        <title>BerTender | RANKING</title>
         {{-- JQuery --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -84,7 +84,67 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="ranking_list">
+                <div class="recipe">
+                    <h2>お気に入りランキング</h2>
+                    <ul >
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/recipe/recipe_img1.jpg" alt=""></p>
+                            <p>キール・ロワイヤル</p>
+                            <p><a href="{{ url('/items/recipe/') }}/1">カクテルの詳細を見る</a></p>
+                        </li>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/recipe/recipe_img14.jpg" alt=""></p>
+                            <p>オレンジ・ブロッサム</p>
+                            <p><a href="{{ url('/items/recipe/') }}/14">カクテルの詳細を見る</a></p>
+                        </li>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/recipe/recipe_img3.jpg" alt=""></p>
+                            <p>ルジェカシス・オレンジ</p>
+                            <p><a href="{{ url('/items/recipe/') }}/3">カクテルの詳細を見る</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="recipe">
+                    <h2>閲覧ランキング</h2>
+                    <ul>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/recipe/recipe_img4.jpg" alt=""></p>
+                            <p>エメラルドスプリッツアー</p>
+                            <p><a href="{{ url('/items/recipe/') }}/4">カクテルの詳細を見る</a></p>
+                        </li>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/recipe/recipe_img3.jpg" alt=""></p>
+                            <p>ルジェカシス・オレンジ</p>
+                            <p><a href="{{ url('/items/recipe/') }}/3">カクテルの詳細を見る</a></p>
+                        </li>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/recipe/recipe_img12.jpg" alt=""></p>
+                            <p>モーツァルト　アイスクリーム</p>
+                            <p><a href="{{ url('/items/recipe/') }}/12">カクテルの詳細を見る</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <h2>購入数ランキング</h2>
+                    <ul>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/item/item_img5.jpg" alt=""></p>
+                            <p>ルジェ　クレーム ド カシス</p>
+                            <p><a href="{{ url('/items/item/') }}/5">商品の詳細を見る</a></p>
+                        </li>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/item/item_img7.jpg" alt=""></p>
+                            <p>マスカットリキュール ド フランス ミスティア</p>
+                            <p><a href="{{ url('/items/item/') }}/7">商品の詳細を見る</a></p>
+                        </li>
+                        <li>
+                            <p><img src="/project_file/EmploymentWork/work/public/img/item/item_img10.jpg" alt=""></p>
+                            <p>モーツァルト チョコレートクリーム リキュール</p>
+                            <p><a href="{{ url('/items/item/') }}/10">商品の詳細を見る</a></p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </main>
         <footer>

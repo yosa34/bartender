@@ -18,6 +18,9 @@ var getViewListURL = "/project_file/EmploymentWork/work/public/user/getViewList"
 var getGoodListURL = "/project_file/EmploymentWork/work/public/user/getGoodList";
 var getPurchaseListURL = "/project_file/EmploymentWork/work/public/user/getPurchaseList";
 var getRecipeItemListURL = "/project_file/EmploymentWork/work/public/user/getRecipeItemList";
+// コメント共有
+var setReviewListURL = "/project_file/EmploymentWork/work/public/user/setReviewList";
+var getReviewListURL = "/project_file/EmploymentWork/work/public/user/getReviewList";
 
 var home = new Vue({
     el: '#home_main_app',
@@ -36,6 +39,7 @@ var home = new Vue({
         loadPurchaseList:false,
         loadRecipeList:false,
         loadRecipeItemList:false,
+        loadReviewList:false,
         categoryList:[
             { id: '0', name: '該当する値がありません',base:'0'}
         ],
@@ -63,7 +67,11 @@ var home = new Vue({
         recipeItemList: [
             {no: '0' ,text:''}
         ],
+        reviewList: [
+            {no: '0' ,text:''}
+        ],
         cocktailName:"",
+        review:"",
         value: 0,
         all_price: 0,
         price: 0,
@@ -169,6 +177,20 @@ var home = new Vue({
                     self.getPurchaseList();
                     console.log("購入");
                     alert('購入が完了しました！');
+                });
+
+        },
+        clickReview(item_id){
+            var self = this;
+            console.log("コメントしました");
+            console.log(self.review);
+            var review = self.review;
+            axios
+            .post(setReviewListURL+"/"+item_id+"/"+review)
+                .then(function (res) {
+                    self.getReviewList(item_id);
+                    console.log("コメント共有完了");
+                    alert('コメントを共有しました');
                 });
 
         },
@@ -323,6 +345,23 @@ var home = new Vue({
                         }
                     });
         },
+        getReviewList(itemId){
+            var self = this;
+            // console.log("確認");
+            axios
+                .get(getReviewListURL+"/"+itemId)
+                    .then(function (res) {
+                        list = res.data;
+                        console.log(list);
+                        if(res.data && list.length > 0){
+                            self.loadReviewList = true;
+                            self.reviewList = list;
+                            console.log("通過");
+                        }else{
+                            self.loadReviewList = false;
+                        }
+                    });
+        }
     },
     mounted:function(){
         //Ajaxを実行
@@ -331,6 +370,7 @@ var home = new Vue({
         if(id === "item"){
             this.getCocktailList(itemId);
             this.getKurtFlg(itemId);
+            this.getReviewList(itemId);
         }
         if(id === "recipe"){
             this.getCocktailList(recipe_id);

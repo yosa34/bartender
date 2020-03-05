@@ -387,5 +387,55 @@ class ApiController extends Controller{
         $assign["itemList"] = $kurtList;
 
     }
+    /*
+        リキュール別コメント取得
+    */
+    public function getReviewList(int $id,Request $request){
+        $assign = [];
+        if(Functions::loginCheck($request)){
+            $validationMsgs[]="ログインしていないか、前回ログインしてから一定時間が経過しています。もう一度ログインしなおしてください。";
+            $assign["validationMsgs"] = $validationMsgs;
+            $templatePath = "login";
 
+            return view($templatePath,$assign);
+        }else{
+
+            $db = DB::connection()->getPdo();
+            $ApiDAO = new ApiDAO($db);
+            $kurtList = $ApiDAO->apiGetReviewList($id);
+            $cocktail_array = array();
+            $cnt = 0;
+            foreach($kurtList as $kurt){
+                $cocktail_array[$cnt]["review_id"] = $kurt->getReviewId();
+                $cocktail_array[$cnt]["review"] = $kurt->getReview();
+                $cocktail_array[$cnt]["create_time"] = $kurt->getTime();
+                $cnt++;
+            }
+
+            $cocktail_ListEnco = json_encode($cocktail_array);
+        }
+        echo $cocktail_ListEnco;
+
+        $assign["itemList"] = $kurtList;
+
+    }
+    /*
+        リキュール別コメント取得
+    */
+    public function setReviewList(int $id,$review,Request $request){
+        $assign = [];
+        if(Functions::loginCheck($request)){
+            $validationMsgs[]="ログインしていないか、前回ログインしてから一定時間が経過しています。もう一度ログインしなおしてください。";
+            $assign["validationMsgs"] = $validationMsgs;
+            $templatePath = "login";
+
+            return view($templatePath,$assign);
+        }else{
+            $user_id = $request->session()->get('id');
+
+            $db = DB::connection()->getPdo();
+            $ApiDAO = new ApiDAO($db);
+            $kurtList = $ApiDAO->insertReview($id,$user_id,$review);
+        }
+    }
 }

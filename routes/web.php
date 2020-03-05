@@ -66,3 +66,7 @@ Route::get('/user/getRecipeItemList/{id}',"ApiController@getRecipeItemList");
 
 // カクテル詳細画面
 Route::get("/items/item/{id}","ItemController@item");
+// コメント
+Route::post('/user/setReviewList/{id}/{review}',"ApiController@setReviewList");
+Route::get('/user/getReviewList/{id}',"ApiController@getReviewList");
+

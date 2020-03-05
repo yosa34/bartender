@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>SEARCH</title>
+        <title>BerTender | SEARCH</title>
         {{-- JQuery --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -94,7 +94,7 @@
                     </li>
                     @empty
                     <li class="item_none">
-                        <a colspan="5">該当部門は存在しません。</a>
+                        <a colspan="5">該当のリキュール存在しません。</a>
                     </li>
                     @endforelse
                 </ul>

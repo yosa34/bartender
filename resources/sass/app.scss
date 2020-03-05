@@ -561,7 +561,9 @@ ul{
         }
     }
 }
-
+/*
+    User Home
+*/
 #userHome{
     header{
         background: url('/project_file/EmploymentWork/work/public/img/header_bg.jpg')no-repeat;
@@ -867,6 +869,58 @@ ul{
                 }
             }
         }
+        /*
+            Ranking
+        */
+        .ranking_list{
+            div{
+                width: 80%;
+                margin: 50px auto 0;
+                h2{
+                    font-size: 25px;
+                    color: #b4a364;
+                    font-weight: bold;
+                    margin: 20px 0;
+                }
+                ul{
+                    width: 100%;
+                    padding: 20px;
+                    display: flex;
+                    overflow: scroll;
+                    li{
+                        text-align: center;
+                        p{
+                            font-size: 18px;
+                            a{
+                                width: 85%;
+                                margin: 10px auto;
+                                font-size: 13px;
+                                background: #b4a364;
+                                border-radius: 15px;
+                                color: #fff;
+                                padding: 10px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+                &.recipe{
+                    p{
+                        img{
+                            width: 200px;
+                        }
+                    }
+                }
+                &.item{
+                    p{
+                        img{
+                            height: 300px;
+                            margin: 10px 50px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -974,12 +1028,55 @@ ul{
                 }
             }
         }
+        .comment_box{
+            width: 90%;
+            margin: 20px auto;
+            >p:first-of-type{
+                color: #b4a364;
+                font-weight: bold;
+                font-size: 17px;
+                margin: 10px 0;
+            }
+            >div{
+                display: flex;
+                justify-content: space-between;
+                input{
+                    width: 80%;
+                    padding: 5px 10px;
+                    text-align: left;
+                    border: 1.5px solid #b4a364;
+                    border-top-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    font-size: 15px;
+                }
+                p:last-of-type{
+                    width: 20%;
+                    margin: 0 auto;
+                    border-top-right-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    border: #b4a364 2px solid;
+                    background: #b4a364;
+                    color: #fff;
+                    padding: 10px 0;
+                    text-align: center;
+                }
+            }
+            a{
+                width: 100%;
+                text-align: center;
+                &:hover{
+                    color: #b4a364;
+                    text-decoration: underline #b4a364;
+                }
+            }
+
+        }
         .good_box{
             width: 150px;
             text-align: center;
             margin: 20px auto;
             .flgOn{
-                background: #eee;
+                background: #fff;
                 color: #decb00;
             }
             p{
@@ -1051,9 +1148,6 @@ ul{
                             }
                         }
                     }
-                    // caption{
-                    //     text-align:left;
-                    // }
                 }
             }
             .item_info{
@@ -1105,6 +1199,17 @@ ul{
                                 border: #b4a364 dashed 2px;
                                 color: #b4a364;
                             }
+                        }
+                    }
+                }
+                &#comment{
+                    li{
+                        padding: 10px;
+                        &:nth-child(2n){
+                            background: #ddd;
+                        }
+                        &:hover{
+                            padding: 10px;
                         }
                     }
                 }

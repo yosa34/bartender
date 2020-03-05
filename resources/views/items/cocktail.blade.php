@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Shakepad</title>
+        <title>BerTender | Cocktail</title>
         {{-- JQuery --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
@@ -60,6 +60,14 @@
                                 </td>
                             </tr>
                         </table>
+                        <div class="comment_box">
+                            <p>リキュールへのコメントの共有</p>
+                            <div>
+                                <input type="text" name="comment_text" id="comment_text" v-model="review"  placeholder="Comment Text...">
+                                <p v-on:click="clickReview({{$itemData->getItemId()}})">共有</p>
+                            </div>
+                            <p><a href="#comment">コメントを見る</a></p>
+                        </div>
                         <div class="kuet_box">
                             <div v-if="kurtFlg" v-on:click="clickNoKurtItem({{$itemData->getItemId()}})" class="flgOn"><img src="{{ url('img/common/kurt_plus.png') }} " alt="カートから外す"><p>カートから外す</p></div>
                             <div v-else v-on:click="clickKurtItem({{$itemData->getItemId()}})"><img src="{{ url('img/common/kurt.png') }} " alt="カートへ入れる"><p>カートへ入れる</p></div>
@@ -82,6 +90,18 @@
                             </li>
                         </ul>
                     </div>
+                </div>
+                <div id="comment" class="item_list_box">
+                    <h2>共有されているコメント</h2>
+                    <ul v-if="loadReviewList">
+                        <li v-for="comments in reviewList">
+                            <p>@{{comments.review}}</p>
+                            <p>@{{comments.create_time}}</p>
+                        </li>
+                    </ul>
+                    <ul v-else>
+                        <li>共有されているコメントはありません</li>
+                    </ul>
                 </div>
             </div>
         </main>

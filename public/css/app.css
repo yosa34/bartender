@@ -645,6 +645,10 @@ ul {
   text-align: center;
 }
 
+/*
+    User Home
+*/
+
 #userHome header {
   background: url("/project_file/EmploymentWork/work/public/img/header_bg.jpg") no-repeat;
   background-size: cover;
@@ -914,6 +918,12 @@ ul {
     -------------------------------
 */
 
+#home main#home_main_app {
+  /*
+      Ranking
+  */
+}
+
 #home main#home_main_app .home_main_data .home_recommended {
   min-width: 80%;
   max-width: 100%;
@@ -972,6 +982,54 @@ ul {
   background: #e0d094;
   color: #fff;
   border-radius: 15px;
+}
+
+#home main#home_main_app .ranking_list div {
+  width: 80%;
+  margin: 50px auto 0;
+}
+
+#home main#home_main_app .ranking_list div h2 {
+  font-size: 25px;
+  color: #b4a364;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#home main#home_main_app .ranking_list div ul {
+  width: 100%;
+  padding: 20px;
+  display: -webkit-box;
+  display: flex;
+  overflow: scroll;
+}
+
+#home main#home_main_app .ranking_list div ul li {
+  text-align: center;
+}
+
+#home main#home_main_app .ranking_list div ul li p {
+  font-size: 18px;
+}
+
+#home main#home_main_app .ranking_list div ul li p a {
+  width: 85%;
+  margin: 10px auto;
+  font-size: 13px;
+  background: #b4a364;
+  border-radius: 15px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+#home main#home_main_app .ranking_list div.recipe p img {
+  width: 200px;
+}
+
+#home main#home_main_app .ranking_list div.item p img {
+  height: 300px;
+  margin: 10px 50px;
 }
 
 /*
@@ -1112,6 +1170,65 @@ ul {
   padding-left: 20px;
 }
 
+#recipe main .comment_box,
+#item main .comment_box {
+  width: 90%;
+  margin: 20px auto;
+}
+
+#recipe main .comment_box > p:first-of-type,
+#item main .comment_box > p:first-of-type {
+  color: #b4a364;
+  font-weight: bold;
+  font-size: 17px;
+  margin: 10px 0;
+}
+
+#recipe main .comment_box > div,
+#item main .comment_box > div {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+#recipe main .comment_box > div input,
+#item main .comment_box > div input {
+  width: 80%;
+  padding: 5px 10px;
+  text-align: left;
+  border: 1.5px solid #b4a364;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  font-size: 15px;
+}
+
+#recipe main .comment_box > div p:last-of-type,
+#item main .comment_box > div p:last-of-type {
+  width: 20%;
+  margin: 0 auto;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: #b4a364 2px solid;
+  background: #b4a364;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#recipe main .comment_box a,
+#item main .comment_box a {
+  width: 100%;
+  text-align: center;
+}
+
+#recipe main .comment_box a:hover,
+#item main .comment_box a:hover {
+  color: #b4a364;
+  -webkit-text-decoration: underline #b4a364;
+          text-decoration: underline #b4a364;
+}
+
 #recipe main .good_box,
 #item main .good_box {
   width: 150px;
@@ -1121,7 +1238,7 @@ ul {
 
 #recipe main .good_box .flgOn,
 #item main .good_box .flgOn {
-  background: #eee;
+  background: #fff;
   color: #decb00;
 }
 
@@ -1291,5 +1408,20 @@ ul {
 #item main > div .item_list_box ul li:hover a {
   border: #b4a364 dashed 2px;
   color: #b4a364;
+}
+
+#recipe main > div .item_list_box#comment li,
+#item main > div .item_list_box#comment li {
+  padding: 10px;
+}
+
+#recipe main > div .item_list_box#comment li:nth-child(2n),
+#item main > div .item_list_box#comment li:nth-child(2n) {
+  background: #ddd;
+}
+
+#recipe main > div .item_list_box#comment li:hover,
+#item main > div .item_list_box#comment li:hover {
+  padding: 10px;
 }
 
